@@ -1,0 +1,6 @@
+if SHIELD_OPUS
+
+config ZMK_OPUS
+    default "Opus"
+
+endif

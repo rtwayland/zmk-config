@@ -1,0 +1,72 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define BASE 0
+#define SYM  1
+#define NAV  2
+#define NUM  3
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
+// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
+//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+            bindings = <
+    &kp TAB       &kp Q      &kp W &kp E &kp R     &kp T                                               &kp Y &kp U  &kp I    &kp O   &kp P    &cp M_PLAY
+    &mt LCTL ESC  &kp A      &kp S &kp D &lt NUM F &kp G                                               &kp H &kp J  &kp K    &kp L   &kp SCLN &kp QUOT
+    &kp LSFT      &mt LGUI Z &kp X &kp C &kp V     &kp B                                               &kp N &kp M  &kp CMMA &kp DOT &kp FSLH &kp RCTL
+                                              &mo NAV &kp LSFT &mt LALT TAB         &kp RET  &lt SYM SPC  &kp BKSP
+            >;
+        };
+        symbol_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
+// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
+//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+            bindings = <
+    &none    &kp TILD &kp ATSN  &kp LCUR &kp RCUR &kp HASH                                    &kp KMLT  &kp CRRT &kp AMPS &kp PIPE &kp BSLH &kp GRAV
+    &kp LCTL &kp GRAV &kp MINUS &kp LPRN &kp RPRN &kp BANG                                    &kp FSLH  &kp CURU &kp CMMA &kp DOT  &kp FSLH &kp QUOT
+    &kp LALT &kp LGUI &kp MINUS &kp LBKT &kp RBKT &kp KPLS                                    &kp NUM_0 &kp EQL  &kp SCLN &kp PRCT &none    &none
+                                                &none &kp LSFT &mt LALT TAB         &kp RET  &trans  &none
+            >;
+        };
+        nav_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
+// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
+//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+            bindings = <
+    &none  &none    &none    &none    &none    &none                             &kp HOME &kp PGDN &kp PGUP &none    &none &none
+    &none  &kp LCTL &kp LALT &kp LSFT &kp LGUI &none                             &kp LARW &kp DARW &kp UARW &kp RARW &none &none
+    &none  &none    &none    &none    &none    &none                             &kp END  &none    &none    &none    &none &none
+                                            &trans &none &none         &none  &none  &kp DEL
+            >;
+        };
+        num_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
+// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
+//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+            bindings = <
+    &none     &none &none &none &none  &none                                     &kp KMLT  &kp NUM_7  &kp NUM_8  &kp NUM_9  &kp FSLH   &kp EQL
+    &kp LCTL  &none &none &none &trans &none                                     &kp KPLS  &kp NUM_4  &kp NUM_5  &kp NUM_6  &kp MINUS  &kp PRCT
+    &kp LALT  &LGUI &none &none &none  &none                                     &kp NUM_0 &kp NUM_1  &kp NUM_2  &kp NUM_3  &kp FSLH   &kp RET
+                                    &none &kp LSFT &mt LALT TAB      &none  &kp SPC  &kp BSPC
+            >;
+        };
+    };
+};
