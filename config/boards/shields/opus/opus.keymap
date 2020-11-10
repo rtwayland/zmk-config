@@ -17,14 +17,13 @@
 #define WORD  6
 
 // Modifiers
-#define LSG(KEY) LS(LG(KEY)) // shift + gui
-#define LSC(KEY) LS(LC(KEY)) // shift + ctrl
-#define LSA(KEY) LS(LA(KEY)) // shift + alt
-#define LCA(KEY) LC(LA(KEY)) // ctrl + alt
-#define LGA(KEY) LG(LA(KEY)) // gui + alt
-#define MEH(KEY) LS(LC(LA(KEY))) // shift + ctrl + alt
-#define LCAG(KEY) LG(LC(LA(KEY)))) // gui + ctrl + alt
-
+#define LSG(KEY)  LS(LG(KEY))      // shift + gui
+#define LSC(KEY)  LS(LC(KEY))      // shift + ctrl
+#define LSA(KEY)  LS(LA(KEY))      // shift + alt
+#define LCA(KEY)  LC(LA(KEY))      // ctrl + alt
+#define LGA(KEY)  LG(LA(KEY))      // gui + alt
+#define MEH(KEY)  LS(LC(LA(KEY)))  // shift + ctrl + alt
+#define LCAG(KEY) LG(LC(LA(KEY)))) // ctrl + alt + gui
 
 // Grammar
 #define EM_DASH LSA(MINUS)
@@ -95,13 +94,13 @@
             >;
         };
 
-        word_layer {
-            bindings = <
-    &none  &none &none       &none &none            &none               &none        &bt BT_PRV  &bt BT_NXT  &none  &none  &bt BT_SEL 0
-    &none  &none &kp EM_DASH &none &kp COMP_MODE    &none               &bt BT_CLR   &none       &none       &none  &none  &bt BT_SEL 1
-    &trans &none &kp EN_DASH &none &kp PASTE_STYLE  &none               &bootloader  &none       &none       &none  &none  &trans
-                                            &none &none &none      &none  &none  &kp DEL
-            >;
-        };
+    //     word_layer {
+    //         bindings = <
+    // &none  &none &none       &none &none            &none               &none        &bt BT_PRV  &bt BT_NXT  &none  &none  &bt BT_SEL 0
+    // &none  &none &kp EM_DASH &none &kp COMP_MODE    &none               &bt BT_CLR   &none       &none       &none  &none  &bt BT_SEL 1
+    // &trans &none &kp EN_DASH &none &kp PASTE_STYLE  &none               &bootloader  &none       &none       &none  &none  &trans
+    //                                         &none &none &none      &none  &none  &kp DEL
+    //         >;
+    //     };
     };
 };
