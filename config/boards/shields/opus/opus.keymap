@@ -30,11 +30,6 @@
             >;
         };
         symbol_layer {
-// ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
             bindings = <
     &kp LC(C)  &kp TILDE  &kp AT     &kp LBRC  &kp RBRC  &kp HASH            &kp STAR   &kp CARET  &kp AMPS   &kp PIPE   &kp BSLH   &kp LC(GRAV)
     &kp LCTRL  &kp GRAV   &kp MINUS  &kp LPAR  &kp RPAR  &kp EXCL            &kp QMARK  &kp DLLR   &kp LT     &kp GT     &kp SLASH  &kp DOUBLE_QUOTES
@@ -43,24 +38,14 @@
             >;
         };
         nav_layer {
-// ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
             bindings = <
     &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &none      &none  &none
     &none  &kp LCTRL  &kp LALT       &kp LSHFT         &kp LGUI          &none                             &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &none  &none
-    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &none      &none  &none
+    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &none      &none  &bootloader
                                                                             &trans &none &none         &none  &kp SPACE  &kp DEL
             >;
         };
         num_layer {
-// ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
             bindings = <
     &none     &none    &none &none &none  &none                     &kp STAR  &kp N7  &kp N8  &kp N9  &kp SLASH  &kp EQUAL
     &kp LCTRL &none    &none &none &trans &none                     &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PRCNT
