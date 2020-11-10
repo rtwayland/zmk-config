@@ -52,7 +52,7 @@ jobs:
           args: 'build "-s zmk/app -b nice_nano -- -DSHIELD=opus -DZMK_CONFIG=/github/workspace/config"'
       - name: Opus DTS File
         if: ${{ always() }}
-        run: cat -n build/zephyr/nice_nano.dts.pre.tmp
+        run: cat -n build/zephyr/cmake/dts.cmake
       - name: Opus Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
