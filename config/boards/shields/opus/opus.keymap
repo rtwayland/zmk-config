@@ -17,13 +17,13 @@
 #define WORD  6
 
 // Modifiers
-#define LSG(KEY)  LS(LG(KEY))      // shift + gui
-#define LSC(KEY)  LS(LC(KEY))      // shift + ctrl
-#define LSA(KEY)  LS(LA(KEY))      // shift + alt
-#define LCA(KEY)  LC(LA(KEY))      // ctrl + alt
-#define LGA(KEY)  LG(LA(KEY))      // gui + alt
-#define MEH(KEY)  LS(LC(LA(KEY)))  // shift + ctrl + alt
-#define LCAG(KEY) LG(LC(LA(KEY)))) // ctrl + alt + gui
+#define LSG(KEY)  LS(LG(KEY))     // shift + gui
+#define LSC(KEY)  LS(LC(KEY))     // shift + ctrl
+#define LSA(KEY)  LS(LA(KEY))     // shift + alt
+#define LCA(KEY)  LC(LA(KEY))     // ctrl + alt
+#define LGA(KEY)  LG(LA(KEY))     // gui + alt
+#define MEH(KEY)  LS(LC(LA(KEY))) // shift + ctrl + alt
+#define LCAG(KEY) LG(LC(LA(KEY))) // ctrl + alt + gui
 
 // Grammar
 #define EM_DASH LSA(MINUS)
@@ -60,9 +60,9 @@
 
         nav_layer {
             bindings = <
-    &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &none      &none  &none
-    &none  &kp LCTRL  &kp LALT       &kp LSHFT         &kp LGUI          &none                             &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &none  &none
-    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &none      &none  &none
+    &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &none      &kp LGA(C_PWR)  &kp C_SLEEP
+    &none  &kp LCTRL  &kp LALT       &kp LSHFT         &kp LGUI          &none                             &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &kp LGA(K_PWR)  &kp K_SLEEP
+    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &none      &none  &kp C_SLEEP_MODE
                                                                             &trans &none &none         &none  &kp SPACE  &kp DEL
             >;
         };
@@ -78,8 +78,7 @@
 
         media_layer {
             bindings = <
-    // &trans         &kp LSG(N5)    &kp LSG(N3)    &kp LSG(N4)   &kp MEH(N4)   &kp C_VOL_UP                     &kp LCA(U)     &kp LCAG(LEFT)  &kp LCAG(RIGHT)  &kp LCA(I)      &kp LCA(EQUAL)  &none
-    &trans &none &none &none  &none  &none                               &none &none &none  &none  &none  &none
+    &trans         &kp LSG(N5)    &kp LSG(N3)    &kp LSG(N4)   &kp MEH(N4)   &kp C_VOL_UP                     &kp LCA(U)     &kp LCAG(LEFT)  &kp LCAG(RIGHT)  &kp LCA(I)      &kp LCA(EQUAL)  &none
     &kp CAPS       &kp F11        &kp C_PREV     &kp C_NEXT    &kp C_PLAY    &kp C_VOL_DN                     &kp LCA(LEFT)  &kp LCA(DOWN)   &kp LCA(UP)      &kp LCA(RIGHT)  &kp LCA(MINUS)  &trans
     &kp C_BRI_DEC  &kp C_BRI_INC  &kp LG(MINUS)  &kp LG(PLUS)  &kp LG(GRAV)  &kp C_MUTE                       &kp LCA(J)     &kp LCA(ENTER)  &kp LCA(C)       &kp LCA(K)      &kp MEH(UP)     &reset
                                                                     &kp LSC(TAB) &kp LC(TAB) &none      &none  &kp MEH(RIGHT)  &kp MEH(LEFT)
