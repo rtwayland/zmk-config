@@ -8,10 +8,19 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define BASE 0
-#define SYM  1
-#define NAV  2
-#define NUM  3
+#define BASE  0
+#define SYM   1
+#define NAV   2
+#define NUM   3
+#define MEDIA 4
+#define FKEYS 5
+
+#define LSG(KEY) LS(LG(KEY)) 
+#define LSC(KEY) LS(LC(KEY)) 
+#define LCA(KEY) LC(LA(KEY)) 
+#define LGA(KEY) LG(LA(KEY)) 
+#define MEH(KEY) LS(LC(LA(KEY)))
+#define LCAG(KEY) LG(LC(LA(KEY)))
 
 / {
     keymap {
@@ -21,12 +30,12 @@
 // ---------------------------------------------------------------------------------------------------------------------------------
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
 // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   |                                          |  N   |  M    |  ,    |  .   |   /   | CTRL |
 //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
             bindings = <
-    &kp TAB        &kp Q       &kp W  &kp E  &kp R      &kp T               &kp Y  &kp U  &kp I      &kp O    &kp P      &kp C_PLAY
-    &mt LCTRL ESC  &kp A       &kp S  &kp D  &lt NUM F  &kp G               &kp H  &kp J  &kp K      &kp L    &kp SCLN   &kp SINGLE_QUOTE
-    &kp LSHFT      &mt LGUI Z  &kp X  &kp C  &kp V      &kp B               &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &kp LSHFT
+    &lt MEDIA TAB        &kp Q       &kp W  &kp E  &kp R      &kp T               &kp Y  &kp U  &kp I      &kp O    &kp P      &kp C_PLAY
+    &mt LCTRL ESC  &kp A       &kp S  &kp D  &lt NUM F  &kp G               &kp H  &kp J  &kp K      &kp L    &kp SCLN   &lt MEDIA SINGLE_QUOTE
+    &kp LSHFT      &mt LGUI Z  &kp X  &kp C  &kp V      &kp B               &kp N  &kp M  &kp COMMA  &kp DOT  &mt LGUI SLASH  &kp LSHFT
                                     &mo NAV  &kp LSHFT  &mt LALT TAB        &kp ENTER  &lt SYM SPACE  &kp BSPC
             >;
         };
@@ -34,7 +43,7 @@
             bindings = <
     &kp LC(C)  &kp TILDE  &kp AT     &kp LBRC  &kp RBRC  &kp HASH            &kp STAR   &kp CARET  &kp AMPS   &kp PIPE   &kp BSLH   &kp LC(GRAV)
     &kp LCTRL  &kp GRAV   &kp MINUS  &kp LPAR  &kp RPAR  &kp EXCL            &kp QMARK  &kp DLLR   &kp LT     &kp GT     &kp SLASH  &kp DOUBLE_QUOTES
-    &kp LALT   &kp LGUI   &kp UNDER  &kp LBKT  &kp RBKT  &kp PLUS            &kp N0     &kp EQUAL  &kp COLON  &kp PRCNT  &none      &none
+    &kp LALT   &kp LGUI   &kp UNDER  &kp LBKT  &kp RBKT  &kp PLUS            &kp N0     &kp EQUAL  &kp PRCNT  &kp COLON  &none      &none
                                         &none &kp LSHFT &mt LALT TAB        &kp ENTER  &trans  &none
             >;
         };
@@ -49,9 +58,25 @@
         num_layer {
             bindings = <
     &none     &none    &none &none &none  &none                     &kp STAR  &kp N7  &kp N8  &kp N9  &kp SLASH  &kp EQUAL
-    &kp LCTRL &none    &none &none &trans &none                     &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PRCNT
+    &kp LCTRL &none    &none &mo FKEYS &trans &none                     &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PRCNT
     &kp LALT  &kp LGUI &none &none &none  &none                     &kp N0    &kp N1  &kp N2  &kp N3  &kp DOT    &kp ENTER
                         &none &kp LSHFT &mt LALT TAB      &none  &kp SPACE  &kp BSPC
+            >;
+        };
+        media_layer {
+            bindings = <
+    &trans     &kp LSG(N5)  &kp LSG(N3)    &kp LSG(N4) &kp MEH(N4) &kp C_VOL_UP                     &kp LCA(U)  &kp LCAG(LEFT)  &kp LCAG(RIGHT)  &kp LCA(I)  &kp LCA(EQUAL)  &kp LGA(C_POWER)
+    &kp CAPS &kp F11    &kp C_PREV &kp C_NEXT &kp C_PLAY &kp C_VOL_DOWN                     &kp LCA(LEFT)  &kp LCA(DOWN)  &kp LCA(UP)  &kp LCA(RIGHT)  &kp LCA(MINUS)  &trans
+    &kp C_BRI_DEC  &kp C_BRI_INC &kp LG(MINUS) &kp LG(PLUS) &kp LG(GRAV)  &kp C_MUTE                     &kp LCA(J)    &kp LCA(ENTER)  &kp LCA(C)  &kp LCA(K)  &kp MEH(UP)    &reset
+                        &kp LSC(TAB) &kp LC(TAB) &none      &none  &kp MEH(RIGHT)  &kp MEH(LEFT)
+            >;
+        };
+        f_layer {
+            bindings = <
+    &none &none &none &none  &none  &none               &kp F12  &kp F7  &kp F8  &kp F9  &kp F17  &kp F20
+    &none &none &none &trans &none  &none               &kp F11  &kp F4  &kp F5  &kp F6  &kp F16  &kp F19
+    &none &none &none &none  &none  &none               &kp F10  &kp F1  &kp F2  &kp F3  &kp f13  &kp F18
+                            &none &none &none      &none  &none  &none
             >;
         };
     };
