@@ -14,13 +14,23 @@
 #define NUM   3
 #define MEDIA 4
 #define FKEYS 5
+#define WORD  6
 
-#define LSG(KEY) LS(LG(KEY)) 
-#define LSC(KEY) LS(LC(KEY)) 
-#define LCA(KEY) LC(LA(KEY)) 
-#define LGA(KEY) LG(LA(KEY)) 
-#define MEH(KEY) LS(LC(LA(KEY)))
-#define LCAG(KEY) LG(LC(LA(KEY)))
+// Modifiers
+#define LSG(KEY) LS(LG(KEY)) // shift + gui
+#define LSC(KEY) LS(LC(KEY)) // shift + ctrl
+#define LSA(KEY) LS(LA(KEY)) // shift + alt
+#define LCA(KEY) LC(LA(KEY)) // ctrl + alt
+#define LGA(KEY) LG(LA(KEY)) // gui + alt
+#define MEH(KEY) LS(LC(LA(KEY))) // shift + ctrl + alt
+#define LCAG(KEY) LG(LC(LA(KEY)))) // gui + ctrl + alt
+
+
+// Grammar
+#define EM_DASH LSA(MINUS)
+#define EN_DASH LA(MINUS)
+#define COMP_MODE LGA(F)
+#define PASTE_STYLE LGA(V)
 
 / {
     keymap {
@@ -33,9 +43,9 @@
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |                                          |  N   |  M    |  ,    |  .   |   /   | CTRL |
 //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
             bindings = <
-    &lt MEDIA TAB        &kp Q       &kp W  &kp E  &kp R      &kp T               &kp Y  &kp U  &kp I      &kp O    &kp P      &kp C_PLAY
-    &mt LCTRL ESC  &kp A       &kp S  &kp D  &lt NUM F  &kp G               &kp H  &kp J  &kp K      &kp L    &kp SCLN   &lt MEDIA SINGLE_QUOTE
-    &kp LSHFT      &mt LGUI Z  &kp X  &kp C  &kp V      &kp B               &kp N  &kp M  &kp COMMA  &kp DOT  &mt LGUI SLASH  &kp LSHFT
+    &lt MEDIA TAB  &kp Q       &kp W  &kp E  &kp R      &kp T               &kp Y  &kp U  &kp I      &kp O    &kp P           &kp C_PLAY
+    &mt LCTRL ESC  &kp A       &kp S  &kp D  &lt NUM F  &kp G               &kp H  &kp J  &kp K      &kp L    &kp SCLN        &lt MEDIA SINGLE_QUOTE
+    &mo WORD       &mt LGUI Z  &kp X  &kp C  &kp V      &kp B               &kp N  &kp M  &kp COMMA  &kp DOT  &mt LGUI SLASH  &mo WORD
                                     &mo NAV  &kp LSHFT  &mt LALT TAB        &kp ENTER  &lt SYM SPACE  &kp BSPC
             >;
         };
@@ -51,18 +61,18 @@
 
         nav_layer {
             bindings = <
-    &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &bt BT_PRV  &bt BT_NXT  &bt BT_CLR
+    &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &none      &none  &none
     &none  &kp LCTRL  &kp LALT       &kp LSHFT         &kp LGUI          &none                             &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &none  &none
-    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &bt BT_SEL 0  &bt BT_SEL 1  &bootloader
+    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &none      &none  &none
                                                                             &trans &none &none         &none  &kp SPACE  &kp DEL
             >;
         };
 
         num_layer {
             bindings = <
-    &none     &none    &none &none &none  &none                     &kp STAR  &kp N7  &kp N8  &kp N9  &kp SLASH  &kp EQUAL
+    &none     &none    &none &none     &none  &none                     &kp STAR  &kp N7  &kp N8  &kp N9  &kp SLASH  &kp EQUAL
     &kp LCTRL &none    &none &mo FKEYS &trans &none                     &kp PLUS  &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PRCNT
-    &kp LALT  &kp LGUI &none &none &none  &none                     &kp N0    &kp N1  &kp N2  &kp N3  &kp DOT    &kp ENTER
+    &kp LALT  &kp LGUI &none &none     &none  &none                     &kp N0    &kp N1  &kp N2  &kp N3  &kp DOT    &kp ENTER
                         &none &kp LSHFT &mt LALT TAB      &none  &kp SPACE  &kp BSPC
             >;
         };
@@ -82,6 +92,15 @@
     &none &none &none &trans &none  &none               &kp F11  &kp F4  &kp F5  &kp F6  &kp F16  &kp F19
     &none &none &none &none  &none  &none               &kp F10  &kp F1  &kp F2  &kp F3  &kp F13  &kp F18
                             &none &none &none      &none  &none  &none
+            >;
+        };
+
+        word_layer {
+            bindings = <
+    &none  &none &none       &none &none            &none               &none        &bt BT_PRV  &bt BT_NXT  &none  &none  &bt BT_SEL 0
+    &none  &none &kp EM_DASH &none &kp COMP_MODE    &none               &bt BT_CLR   &none       &none       &none  &none  &bt BT_SEL 1
+    &trans &none &kp EN_DASH &none &kp PASTE_STYLE  &none               &bootloader  &none       &none       &none  &none  &trans
+                                            &none &none &none      &none  &none  &kp DEL
             >;
         };
     };
