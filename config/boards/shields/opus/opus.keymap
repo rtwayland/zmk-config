@@ -6,6 +6,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 
 #define BASE 0
 #define SYM  1
@@ -39,9 +40,9 @@
         };
         nav_layer {
             bindings = <
-    &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &none      &none  &none
+    &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &bt BT_PRV  &bt BT_NXT  &bt BT_CLR
     &none  &kp LCTRL  &kp LALT       &kp LSHFT         &kp LGUI          &none                             &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &none  &none
-    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &none      &none  &bootloader
+    &none  &none      &none          &none             &none             &kp LA(LEFT)                      &kp END   &none     &none     &bt BT_SEL 0  &bt BT_SEL 1  &bootloader
                                                                             &trans &none &none         &none  &kp SPACE  &kp DEL
             >;
         };
