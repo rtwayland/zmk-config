@@ -45,17 +45,17 @@ jobs:
         id: west-zephyr-export
         with:
           args: 'zephyr-export'
-      - name: West Build (RoMac)
+      - name: West Build (Opus)
         uses: 'docker://zmkfirmware/zephyr-west-action-arm:latest'
-        id: west-build-romac
+        id: west-build-opus
         with:
-          args: 'build "-s zmk/app -b nice_nano -- -DSHIELD=romac -DZMK_CONFIG=/github/workspace/config"'
-      - name: RoMac Kconfig file
+          args: 'build "-s zmk/app -b nice_nano -- -DSHIELD=opus -DZMK_CONFIG=/github/workspace/config"'
+      - name: Opus Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 romac_nice_nano.uf2
-      - name: Archive (RoMac)
+        run: cp build/zephyr/zmk.uf2 opus_nice_nano.uf2
+      - name: Archive (Opus)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: romac_nice_nano.uf2
+          path: opus_nice_nano.uf2
