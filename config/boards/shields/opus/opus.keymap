@@ -39,6 +39,7 @@
                                     &mo NAV  &kp LSHFT  &mt LALT TAB        &kp ENTER  &lt SYM SPACE  &kp BSPC
             >;
         };
+
         symbol_layer {
             bindings = <
     &kp LC(C)  &kp TILDE  &kp AT     &kp LBRC  &kp RBRC  &kp HASH            &kp STAR   &kp CARET  &kp AMPS   &kp PIPE   &kp BSLH   &kp LC(GRAV)
@@ -47,6 +48,7 @@
                                         &none &kp LSHFT &mt LALT TAB        &kp ENTER  &trans  &none
             >;
         };
+
         nav_layer {
             bindings = <
     &none  &none      &kp LA(RIGHT)  &kp LS(LG(LBRC))  &kp LS(LG(RBRC))  &none                             &kp HOME  &kp PGDN  &kp PGUP  &bt BT_PRV  &bt BT_NXT  &bt BT_CLR
@@ -55,6 +57,7 @@
                                                                             &trans &none &none         &none  &kp SPACE  &kp DEL
             >;
         };
+
         num_layer {
             bindings = <
     &none     &none    &none &none &none  &none                     &kp STAR  &kp N7  &kp N8  &kp N9  &kp SLASH  &kp EQUAL
@@ -63,14 +66,16 @@
                         &none &kp LSHFT &mt LALT TAB      &none  &kp SPACE  &kp BSPC
             >;
         };
+
         media_layer {
             bindings = <
-    &trans     &kp LSG(N5)  &kp LSG(N3)    &kp LSG(N4) &kp MEH(N4) &kp C_VOL_UP                     &kp LCA(U)  &kp LCAG(LEFT)  &kp LCAG(RIGHT)  &kp LCA(I)  &kp LCA(EQUAL)  &kp LGA(C_POWER)
-    &kp CAPS &kp F11    &kp C_PREV &kp C_NEXT &kp C_PLAY &kp C_VOL_DOWN                     &kp LCA(LEFT)  &kp LCA(DOWN)  &kp LCA(UP)  &kp LCA(RIGHT)  &kp LCA(MINUS)  &trans
-    &kp C_BRI_DEC  &kp C_BRI_INC &kp LG(MINUS) &kp LG(PLUS) &kp LG(GRAV)  &kp C_MUTE                     &kp LCA(J)    &kp LCA(ENTER)  &kp LCA(C)  &kp LCA(K)  &kp MEH(UP)    &reset
-                        &kp LSC(TAB) &kp LC(TAB) &none      &none  &kp MEH(RIGHT)  &kp MEH(LEFT)
+    &trans         &kp LSG(N5)    &kp LSG(N3)    &kp LSG(N4)   &kp MEH(N4)   &kp C_VOL_UP                     &kp LCA(U)     &kp LCAG(LEFT)  &kp LCAG(RIGHT)  &kp LCA(I)      &kp LCA(EQUAL)  &kp LGA(C_POWER)
+    &kp CAPS       &kp F11        &kp C_PREV     &kp C_NEXT    &kp C_PLAY    &kp C_VOL_DOWN                   &kp LCA(LEFT)  &kp LCA(DOWN)   &kp LCA(UP)      &kp LCA(RIGHT)  &kp LCA(MINUS)  &trans
+    &kp C_BRI_DEC  &kp C_BRI_INC  &kp LG(MINUS)  &kp LG(PLUS)  &kp LG(GRAV)  &kp C_MUTE                       &kp LCA(J)     &kp LCA(ENTER)  &kp LCA(C)       &kp LCA(K)      &kp MEH(UP)     &reset
+                                                                    &kp LSC(TAB) &kp LC(TAB) &none      &none  &kp MEH(RIGHT)  &kp MEH(LEFT)
             >;
         };
+        
         f_layer {
             bindings = <
     &none &none &none &none  &none  &none               &kp F12  &kp F7  &kp F8  &kp F9  &kp F17  &kp F20
@@ -81,3 +86,5 @@
         };
     };
 };
+
+&kp (((((0x07) << 16) | (0x39)))) &kp ((((0x07) << 16) | (0x44))) &kp (((((0x0C) << 16) | (0xB6)))) &kp ((((0x0C) << 16) | (0xB5))) &kp ((((0x0C) << 16) | (0xB0))) &kp C_VOL_DOWN &kp (0x01 << 24 | (0x04 << 24 | (((((0x07) << 16) | (0x50)))))) &kp (0x01 << 24 | (0x04 << 24 | (((((0x07) << 16) | (0x51)))))) &kp (0x01 << 24 | (0x04 << 24 | (((((0x07) << 16) | (0x52)))))) &kp (0x01 << 24 | (0x04 << 24 | (((((0x07) << 16) | (0x4F)))))) &kp (0x01 << 24 | (0x04 << 24 | ((((0x07) << 16) | (0x2D))))) &trans
