@@ -39,7 +39,7 @@
     &kp LC(C)  &kp TILDE  &kp AT     &kp LBRC  &kp RBRC  &kp HASH            &kp STAR   &kp CARET  &kp AMPS   &kp PIPE   &kp BSLH   &kp LC(GRAV)
     &kp LCTRL  &kp GRAV   &kp MINUS  &kp LPAR  &kp RPAR  &kp EXCL            &kp QMARK  &kp DLLR   &kp LT     &kp GT     &kp SLASH  &kp DOUBLE_QUOTES
     &kp LALT   &kp LGUI   &kp UNDER  &kp LBKT  &kp RBKT  &kp PLUS            &kp N0     &kp EQUAL  &kp COLON  &kp PRCNT  &none      &none
-                                         &none &kp LSHFT &mt LALT TAB        &kp ENTER  &trans  &none
+                                        &none &kp LSHFT &mt LALT TAB        &kp ENTER  &trans  &none
             >;
         };
         nav_layer {
